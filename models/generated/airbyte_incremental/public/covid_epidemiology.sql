@@ -24,5 +24,5 @@ select
 from {{ ref('covid_epidemiology_ab3') }}
 -- covid_epidemiology from {{ source('public', '_airbyte_raw_covid_epidemiology') }}
 where 1 = 1
-{{ incremental_clause('_airbyte_emitted_at') }}
+{{ incremental_clause(adapter.quote('date')) }}
 
