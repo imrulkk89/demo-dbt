@@ -1,0 +1,17 @@
+config:
+  partial_parse: true
+  printer_width: 120
+  send_anonymous_usage_stats: false
+  use_colors: true
+normalize:
+  outputs:
+    prod:
+      dbname: quarantine
+      host: localhost
+      pass: mysecretpassword
+      port: 5432
+      schema: public
+      threads: 32
+      type: postgres
+      user: postgres
+  target: prod
