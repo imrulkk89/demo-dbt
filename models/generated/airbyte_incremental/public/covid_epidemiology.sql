@@ -8,7 +8,7 @@
 -- depends_on: {{ ref('covid_epidemiology_ab3') }}
 select
     {{ adapter.quote('key') }},
-    {{ adapter.quote('date') }},
+    {{ adapter.quote('date') }} as date,
     new_tested,
     new_deceased,
     total_tested,
@@ -24,5 +24,6 @@ select
 from {{ ref('covid_epidemiology_ab3') }}
 -- covid_epidemiology from {{ source('public', '_airbyte_raw_covid_epidemiology') }}
 where 1 = 1
-{{ incremental_clause(adapter.quote('date')) }}
+{{ incremental_clause('_airbyte_emitted_at') }}
+order by date asc;
 
